@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+  </head>
+  <style>
+    .homepage {
+      display: flex;
+    }
+    .navbar {
+      margin: 0%;
+      width: 280px;
+      height: 700px;
+      background-color: rgb(236, 228, 229);
+    }
+    .tasks {
+      padding-left: 15%;
+      padding-top: 50px;
+    }
+    .add {
+      width: 40px;
+      height: 40px;
+      background-color: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+    .task-input {
+      margin-top: 15px;
+    }
+
+    .task-input input {
+      padding: 8px;
+      width: 200px;
+    }
+
+    .task-input button {
+      padding: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="homepage">
+      <div class="navbar">
+        <h2>Menu:</h2>
+      </div>
+      <div class="tasks">
+        <h3>Today</h3>
+        <div class="add">+</div>
+        <div class="task-input" style="display: none">
+          <input type="text" id="taskText" placeholder="Enter new task" />
+          <button class="addTaskbtn">Add</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const addBtn = document.querySelector(".add");
+    const taskInputDiv = document.querySelector(".task-input");
+    const addTaskbtn = document.querySelector(".addTaskbtn");
+    const taskText = document.getElementById("taskText");
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        taskInputDiv.style.display = "block";
+      });
+    }
+    addTaskbtn.addEventListener("click", () => {
+      let value = taskText.value;
+      if (value == "") {
+        alert("Enter a valid task!");
+        return;
+      }
+      let taskcontainer = document.createElement("div");
+
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          newTask.style.textDecoration = "line-through";
+        } else {
+          newTask.style.textDecoration = "none";
+        }
+      });
+
+      let newTask = document.createElement("span");
+      newTask.textContent = value;
+
+      taskcontainer.appendChild(checkbox);
+      taskcontainer.appendChild(newTask);
+
+      document.querySelector(".tasks").appendChild(taskcontainer);
+
+      taskText.value = "";
+    });
+  </script>
+</html>

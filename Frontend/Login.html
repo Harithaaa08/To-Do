@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+  </head>
+  <style>
+    h1 {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      animation: showText 1s forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes showText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    /* Form container */
+    .form {
+      width: 300px;
+      margin: 50px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Labels */
+    .form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    /* Inputs */
+    .form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+    }
+
+    /* Input focus effect */
+    .form input:focus {
+      border-color: blue;
+      outline: none;
+    }
+
+    /* Button */
+    .form button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 60%;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .form button:hover {
+      background-color: darkblue;
+      transition: 1s;
+    }
+    .container {
+      width: 1000px;
+      display: flex;
+      margin: 50px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .left,
+    .right {
+      width: 50%;
+    }
+    .left {
+      padding: 20px;
+      background-color: rgb(243, 238, 233);
+    }
+    .heading {
+      text-align: center;
+      padding-bottom: 50px;
+    }
+    .right {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background: linear-gradient(135deg, #8eeade, #7be6ea, #1aacb1, #37e0e6);
+    }
+    .right h2 {
+      font-weight: 300;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1>You May Login Here With Credentials</h1>
+    <div class="container">
+      <div class="left">
+        <form action="HomePage.html" class="form" onsubmit="getData(event)">
+          <h2 class="heading">Welcome Back!</h2>
+          <label for="name">Enter Your name:</label>
+          <input type="text" name="name" id="name" />
+
+          <label for="pass">Enter Password:</label>
+          <input type="password" name="pass" id="pass" />
+
+          <button>Submit</button>
+        </form>
+      </div>
+      <div class="right">
+        <h2>To-Do List Application</h2>
+        <p>Make your thoughts feel completed</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    function getData(event) {
+      let name = document.getElementById("name");
+      let pass = document.getElementById("pass");
+
+      if (pass.value == "12345") {
+        name.value = "";
+        pass.value = "";
+      } else if (pass.value == "") {
+        event.preventDefault();
+        alert("Enter Valid Password");
+      } else {
+        event.preventDefault();
+        alert("Wrong Password!!");
+        pass.value = "";
+      }
+    }
+  </script>
+</html>
